@@ -1,7 +1,9 @@
 
+import en from './en.js';
+import ru from './ua.js';
+import ua from './ru.js';
 import zhHans from './zh-hans.js';
 import zhHant from './zh-hant.js';
-import en from './en.js';
 
 /**
  * @typedef {Object} I18n
@@ -73,5 +75,9 @@ export default function i18n(lang) {
     case 'en':
     case 'en-us':
       return en;
+    case 'ua':
+      return ua;
+    case 'ru':
+      return ru;
   }
 }

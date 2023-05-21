@@ -33,40 +33,52 @@
 /**
  * @type {Environment}
  */
+// This is ENV defaults
 export const ENV = {
-
   // OpenAI API Key
   API_KEY: null,
   // 允许访问的Telegram Token， 设置时以逗号分隔
+  // Allowed Telegram Tokens, set with comma separation
   TELEGRAM_AVAILABLE_TOKENS: [],
 
   // 允许所有人使用
+  // Allow everyone to use
   I_AM_A_GENEROUS_PERSON: false,
   // 白名单
+  // Whitelist
   CHAT_WHITE_LIST: [],
 
   // 允许访问的Telegram Token 对应的Bot Name， 设置时以逗号分隔
+  // Allowed Telegram Token corresponding Bot Name, set with comma separation
   TELEGRAM_BOT_NAME: [],
   // 群组白名单
   CHAT_GROUP_WHITE_LIST: [],
   // 群组机器人开关
   GROUP_CHAT_BOT_ENABLE: true,
   // 群组机器人共享模式,关闭后，一个群组只有一个会话和配置。开启的话群组的每个人都有自己的会话上下文
+  // Group chat bot sharing mode, after closing, a group only has one session and configuration. If enabled, everyone in the group has their own session context
   GROUP_CHAT_BOT_SHARE_MODE: false,
 
   // OpenAI的模型名称
+  // OpenAI's model name
   CHAT_MODEL: 'gpt-3.5-turbo',
   // 为了避免4096字符限制，将消息删减
+  // To avoid the 4096 character limit, reduce the message
   AUTO_TRIM_HISTORY: true,
   // 最大历史记录长度
+  // Maximum history record length
   MAX_HISTORY_LENGTH: 20,
   // 最大消息长度
+  // Maximum message length
   MAX_TOKEN_LENGTH: 2048,
   // 使用GPT3的TOKEN计数
+  // Use GPT3's TOKEN count
   GPT3_TOKENS_COUNT: false,
   // 全局默认初始化消息
+  // Global default initialization message
   SYSTEM_INIT_MESSAGE: 'You are a helpful assistant',
   // 全局默认初始化消息角色
+  // Global default initialization message role
   SYSTEM_INIT_MESSAGE_ROLE: 'system',
 
   // 是否开启使用统计
@@ -78,14 +90,19 @@ export const ENV = {
 
 
   // 检查更新的分支
+  // Branch to check for updates
   UPDATE_BRANCH: 'master',
   // 当前版本
+  // Current version
   BUILD_TIMESTAMP: process.env.BUILD_TIMESTAMP || 0,
   // 当前版本 commit id
+  // Current version commit id
   BUILD_VERSION: process.env.BUILD_VERSION || '',
 
+  // Internationalization configuration
   I18N: null,
-  LANGUAGE: 'zh-cn',
+  // Language setting
+  LANGUAGE: 'en',
 
   // 使用流模式
   STREAM_MODE: true,
@@ -96,9 +113,10 @@ export const ENV = {
   // 开发模式
   DEV_MODE: false,
 
+  // Telegram API domain
   TELEGRAM_API_DOMAIN: 'https://api.telegram.org',
+  // OpenAI API domain
   OPENAI_API_DOMAIN: 'https://api.openai.com',
-
 };
 
 export const CONST = {
@@ -160,6 +178,7 @@ export function initEnv(env, i18n) {
   }
   {
     // 兼容性代码 兼容旧版本
+    // Compatibility code to support older versions
     if (env.TELEGRAM_TOKEN && !ENV.TELEGRAM_AVAILABLE_TOKENS.includes(env.TELEGRAM_TOKEN)) {
       if (env.BOT_NAME && ENV.TELEGRAM_AVAILABLE_TOKENS.length === ENV.TELEGRAM_BOT_NAME.length) {
         ENV.TELEGRAM_BOT_NAME.push(env.BOT_NAME);
